@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+  font-family: 'Android';
+  src: url(../pacote-projeto-d010/fontes/idroid.otf) format('opentype');
+  font-weight: none;
+}
+
+
+/*
+Primeira decisão sobre paleta de cores. Fui adequando aos poucos...
+#e6fde7
+#82E088
+#47944C
+#AA99E0
+#E0A36C
+#9c4d08
+*/
+
+/*pseudoclasse root - aqui temos a raiz da árvore do nosso documento. Toda classe em CSS começa com --
+Caso eu precise mudar a cor, basta eu apenas mudar nessa pesudoclasse root e todas as cores correspondentes mudam automaticamente. Isso economiza muito tempo de produção*/
+:root {
+  --cor0: #e6fde7;
+  --cor1: #052504;
+  --cor2: #47944C;
+  --cor3: #bcf4ba;
+  --cor4: #E0A36C;
+  --cor5: #f9e4d2;
+
+  --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+  --fonte-destaque: 'Bebas Neue', sans-serif, cursive;
+  --fonte-android: 'Android', cursive;
+}
+
+/*abaixo criei um seletor global para todos para que todas as configurações de espaçamentos sejam zeradas e eu possa configurá-las mais especificamente*/
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: var(--cor0);
+  font-family: var(--fonte-padrao);
+}
+
+a.externo::after {
+  content: '\00A0\1F517'; /*aqui coloquei um espaço antes do link para ficar mais harmônico*/
+}
+
+header {
+  background-image: linear-gradient(to bottom, var(--cor2), var(--cor1));
+  min-height: 150px;
+  color: var(--cor3);
+  font-family: var(--fonte-destaque);
+  text-align: center;
+  padding-top: 40px;
+}
+
+header > h1 {
+  color: white;
+  font-family: var(--fonte-destaque);
+  font-size: 3em;
+  font-weight: normal;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.394);
+}
+
+header > p {
+  font-family: var(--fonte-padrao);
+  font-size: 1.2em;
+  color: var(--cor5);
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.394);
+}
+
+nav {
+  background-color: var(--cor1);
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 7px 7px rgba(0, 0, 0, 0.348);
+}
+
+nav > a {
+  color: var(--cor4);
+  padding: 10px; /*para separar os menus*/
+  border-radius: 5px;
+  text-decoration: none; /*para retirar o sublinhado*/
+  font-weight: bold;
+  transition-duration: .5s;
+}
+
+nav > a:hover {
+  background-color: var(--cor2);
+  color: var(--cor3);
+}
+
+main {
+  min-width: 320px;
+  max-width: 1000px;
+  margin: auto; /*aqui é pra quando estivermos vendo em tela cheia, ela não crescer - fica no meio*/
+  margin-bottom: 30px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.518);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px; /*com essas duas borders, eu consigo arredondar a bordar debaixo e deixar a borda de cima retinha*/
+}
+
+main h1 {
+  color: var(--cor2);
+  font-family: var(--fonte-android);
+  font-weight: normal;
+  font-size: 1.8em;
+}
+
+main h2 {
+  font-family: var(--fonte-android);
+  color: var(--cor1);
+  background-image: linear-gradient(to right, var(--cor2), var(--cor3));
+  font-size: 1.8em;
+  font-weight: normal;
+  text-indent: 15px;
+}
+
+main p { /*parágrafos dentro do main. Coloco main p, para não mudar. O p pode estar dentro de um main em qualquer nível. Se eu colocar sinal de maior (>), posso não considerar os parágrafos que estão em article e em div. Quando coloco sem o sinal de maior, considero todos*/
+  margin: 15px 0; /*cima, direita, abaixo,esquerda. Como são dois iguais, não preciso repetir. Criei uma margem em cima e embaixo de todos os parágrafos*/
+  text-align: justify;
+  text-indent: 30px;
+  font-size: 1em;
+  line-height: 2em;
+}
+
+main strong {
+  color: var(--cor2);
+  font-weight: bold;
+  background-color: var(--cor3);
+  padding: 2px 6px;
+}
+
+main a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--cor1);
+  background-color: var(--cor5);
+  padding: 2px 6px;
+}
+
+main a:hover {
+  text-decoration: underline;
+  color: var(--cor2);
+}
+
+main img {
+  width: 100%; /*aqui faz com que as imagens se adaptem a cada tela até 1000px ou se exprema*/
+}
+
+main img.pequena {
+  max-width: 350px; /*com a porcentagem, a imagem ficaria toda borrada quando formos aumentar o site*/
+  margin: auto;
+  display: block; /*aqui eu não faço margin auto para centralizar, pq uma img por padrão não é um bloco */
+}
+
+div.video {
+  background-color: var(--cor1);
+  margin: 0px -20px 30px -20px; /*menos 20 que é para colar no main. são 10 do main e 10 do artigo. Eu elimino uma linha de código do margin bottom dde 30px acrescentando no margin principal*/
+  padding: 20px;
+  padding-bottom: 58%;
+  position: relative;
+}
+
+div.video > iframe {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+
+}
+
+aside {
+  background-color: var(--cor3);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.292);
+}
+
+aside > h3 {
+  background-image: linear-gradient(to right, var(--cor1), var(--cor3));
+  font-family: var(--fonte-android);
+  color: var(--cor3);
+  font-weight: normal;
+  font-size: 1.8em;
+  padding: 5px;
+  text-indent: 5px;
+  margin: -10px -10px 0px -10px;
+  border-radius: 10px 10px 0px 0px;
+  }
+
+aside > ul {
+  list-style-type: '\1F5F8\00A0\00A0'; /*Aqui é o código do emojipedia para o check, depois de \ temos 00A0 que é um espaço em branco. Esse código não é compatível com qualquer navegador*/
+  list-style-position: inside; /*posição das bolinhas, para dentro*/
+  columns: 2;
+}
+
+footer {
+  background-color: var(--cor1);
+  color: white;
+  font-size: 0.8em;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+footer a { /*também posso colocar assim footer > p > a  ou seja, fazendo todo o caminho até chegar ao link*/
+  text-decoration: none;
+  color: var(--cor3);
+}
+
+footer a:hover {
+  color: var(--cor2);
+  font-size: 1.2em;
+  text-decoration: underline;
+  background-color: var(--cor3);
+  transition-duration: .5s;
+}
+
